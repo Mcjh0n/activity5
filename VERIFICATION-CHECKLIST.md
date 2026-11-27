@@ -17,8 +17,8 @@ After the fixes, ten focused regression assertions passed using a controlled in-
 | AC-04 | Window showed Contacting the shipment service and disabled configuration, Refresh, status filter and export during the request; controls recovered afterward. Regression assertions confirmed overlap prevention. | Passed: loading/recovery previously observed; final successful UI refresh displayed five records. |
 | AC-05 | Real HTTP 400, 500, delayed timeout, stopped service and retry exercised. Final UI displayed an understandable unreachable-service message. Regression checks confirmed stale-data notice survives filtering/export and clears after success. | Passed in final live service/ViewModel checks; persistent notice bound in UI. |
 | AC-06 | BR-999 and empty mode returned successful zero records; invalid-json produced failure feedback. | Passed again against live API on final code. |
-| AC-07 | Actual application export produced exactly two InTransit rows with the required header. Regression checks passed comma and quotation-mark escaping. | Export logic passed; native save-dialog completion remains. |
-| AC-08 | Exporting to a directory produced understandable failure feedback. Empty export created no file. UI disables export when no records exist. | Logic checks passed; native save-dialog failure path remains. |
+| AC-07 | Actual application export produced exactly two InTransit rows with the required header. Regression checks passed comma and quotation-mark escaping. | Passed: student completed native save; HubLink-UI-InTransit.csv parsed and matched both displayed rows. |
+| AC-08 | Exporting to a directory produced understandable failure feedback. Empty export created no file. UI disables export when no records exist. | Passed via actual export service/ViewModel with an unwritable target and empty results. Native dialog errors not separately exercised. |
 
 ## CSV sample provenance
 
@@ -28,10 +28,12 @@ HubLink-CSV-Sample.csv is the unchanged filtered CSV created during the real API
 
 All ten passed: retrieval/summary; persistent stale warning; warning after filtering; warning after export; CSV commas/quotes; export write failure; successful retry clears warning; loading prevents overlap; controls recover; empty export creates no file.
 
-## Remaining verification
+## Final UI verification
 
 The student started the supplied service at http://127.0.0.1:5080. The final desktop window successfully retrieved five BR-001 records and displayed the correct fields and summaries. Selecting InTransit displayed HUB-1001 and HUB-1005. Sixteen final live API assertions passed, covering summary, all five filters, HTTP 400/500, invalid JSON, timeout, stale notice, empty/normal responses, empty branch, retry and unwritable export target.
 
-The native save dialog opened, but the Windows automation helper failed to target it ('no screenshot targets found'). The student has been asked to save C:\Users\John Mark Fuentes\AppData\Local\Temp\HubLink-UI-InTransit.csv. File verification and native save-dialog failure checking remain pending; no completion is claimed for those steps.
+The native save dialog opened. After the automation helper failed to target it, the student completed the save and confirmed it. HubLink-UI-InTransit.csv was read from the requested temporary location and copied unchanged into this repository. It parsed successfully: five required headers in order, exactly HUB-1001 and HUB-1005, both InTransit, with values matching the displayed API records. Computer Use was stopped with Escape afterward.
+
+AC-01 through AC-08 have coverage from the combined live UI, live API/ViewModel, file-content and regression checks described above. Native save-dialog error handling was not separately exercised; file-write failure handling was verified. The actual UI retained the normal endpoint and blank Test Mode.
 
 The student confirmed on November 27, 2026 that the instructor approved individual submission by John Mark Fuentes - BSIT 3D.

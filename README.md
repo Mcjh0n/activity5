@@ -52,6 +52,7 @@ The controlled test modes use endpoint `/api/test/shipments` and a mode such as 
 
 ## Deliverables
 
+- `HubLink-UI-InTransit.csv` was saved through the desktop export dialog and verified against the two displayed InTransit records.
 - `VERIFICATION-CHECKLIST.md` records the acceptance scenarios and current verification status.
 - `HubLink-CSV-Sample.csv` contains the two BR-001 InTransit records exported by the application's ViewModel and CSV service after a real request to the supplied API on November 27, 2026. To regenerate a sample containing all branch records while the API is running:
 
