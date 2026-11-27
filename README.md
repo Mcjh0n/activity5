@@ -64,4 +64,4 @@ This command defaults to `BR-001` at `http://127.0.0.1:5080`. A different base a
 
 ## AI-assisted work
 
-AI assistance was used to create the initial application implementation and documentation. The student must review the code, run the acceptance checks, and be prepared to explain the implementation.
+AI assistance was used to create the initial application implementation and documentation.
