@@ -11,12 +11,12 @@ After the fixes, ten focused regression assertions passed using a controlled in-
 
 | ID | Observed result | Verification status |
 |---|---|---|
-| AC-01 | Real HTTP retrieval returned all five BR-001 records through the actual application services and ViewModel. XAML binds all required fields. | Integration passed before fixes; final populated-window check remains. |
-| AC-02 | All/Pending/InTransit/Delivered/Exception yielded 5/1/2/1/1 visible records. | ViewModel check passed; interactive filter check remains. |
-| AC-03 | Summary was 5 total, 1 Pending, 2 InTransit, 1 Delivered, 1 Exception and stayed unchanged under filters. | Integration passed. |
-| AC-04 | Window showed Contacting the shipment service and disabled configuration, Refresh, status filter and export during the request; controls recovered afterward. Regression assertions confirmed overlap prevention. | Loading/recovery observed; live successful refresh in final UI remains. |
-| AC-05 | Real HTTP 400, 500, delayed timeout, stopped service and retry exercised. Final UI displayed an understandable unreachable-service message. Regression checks confirmed stale-data notice survives filtering/export and clears after success. | Service/ViewModel checks passed; final live stale-warning UI check remains. |
-| AC-06 | BR-999 and empty mode returned successful zero records; invalid-json produced failure feedback. | Live integration passed before fixes. |
+| AC-01 | Real HTTP retrieval returned all five BR-001 records through the actual application services and ViewModel. XAML binds all required fields. | Passed: final window displayed all five API records. |
+| AC-02 | All/Pending/InTransit/Delivered/Exception yielded 5/1/2/1/1 visible records. | Passed: all filters verified against live API in final ViewModel; InTransit also selected in actual UI. |
+| AC-03 | Summary was 5 total, 1 Pending, 2 InTransit, 1 Delivered, 1 Exception and stayed unchanged under filters. | Passed again against live API on final code. |
+| AC-04 | Window showed Contacting the shipment service and disabled configuration, Refresh, status filter and export during the request; controls recovered afterward. Regression assertions confirmed overlap prevention. | Passed: loading/recovery previously observed; final successful UI refresh displayed five records. |
+| AC-05 | Real HTTP 400, 500, delayed timeout, stopped service and retry exercised. Final UI displayed an understandable unreachable-service message. Regression checks confirmed stale-data notice survives filtering/export and clears after success. | Passed in final live service/ViewModel checks; persistent notice bound in UI. |
+| AC-06 | BR-999 and empty mode returned successful zero records; invalid-json produced failure feedback. | Passed again against live API on final code. |
 | AC-07 | Actual application export produced exactly two InTransit rows with the required header. Regression checks passed comma and quotation-mark escaping. | Export logic passed; native save-dialog completion remains. |
 | AC-08 | Exporting to a directory produced understandable failure feedback. Empty export created no file. UI disables export when no records exist. | Logic checks passed; native save-dialog failure path remains. |
 
@@ -30,6 +30,8 @@ All ten passed: retrieval/summary; persistent stale warning; warning after filte
 
 ## Remaining verification
 
-Starting the supplied service for the final UI pass was rejected by automatic approval review with 'blocked by policy'. No final live UI checks are claimed as complete. Start the supplied service normally and run the remaining UI checks above. Restore /api/shipments, BR-001, and a blank Test Mode afterward.
+The student started the supplied service at http://127.0.0.1:5080. The final desktop window successfully retrieved five BR-001 records and displayed the correct fields and summaries. Selecting InTransit displayed HUB-1001 and HUB-1005. Sixteen final live API assertions passed, covering summary, all five filters, HTTP 400/500, invalid JSON, timeout, stale notice, empty/normal responses, empty branch, retry and unwritable export target.
 
-The activity specifies pair work. This project identifies one student at the user's explicit request; instructor acceptance of individual submission is not established.
+The native save dialog opened, but the Windows automation helper failed to target it ('no screenshot targets found'). The student has been asked to save C:\Users\John Mark Fuentes\AppData\Local\Temp\HubLink-UI-InTransit.csv. File verification and native save-dialog failure checking remain pending; no completion is claimed for those steps.
+
+The student confirmed on November 27, 2026 that the instructor approved individual submission by John Mark Fuentes - BSIT 3D.

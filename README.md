@@ -6,6 +6,8 @@ HubLink is an Avalonia desktop client for the supplied read-only shipment API. I
 
 John Mark Fuentes - BSIT 3D
 
+Individual submission approved by the instructor, as confirmed by the student on November 27, 2026.
+
 ## Requirements
 
 - Windows 10/11 x64
@@ -20,11 +22,11 @@ From the workspace root (the folder containing both `HubLink.Desktop` and `HubLi
 
 ## Run the desktop app
 
-From the workspace root, restore and launch the project:
+From the repository folder containing `HubLink.Desktop.csproj`, restore and launch the project:
 
 ```powershell
-dotnet restore .\HubLink.Desktop\HubLink.Desktop.csproj
-dotnet run --project .\HubLink.Desktop\HubLink.Desktop.csproj
+dotnet restore .\HubLink.Desktop.csproj
+dotnet run --project .\HubLink.Desktop.csproj
 ```
 
 In the app, set the service address and branch code. Defaults are `http://127.0.0.1:5080` and `BR-001`. The endpoint defaults to `/api/shipments`; leave Test Mode blank for normal use. Press **Refresh** to make a real GET request. The app's request timeout is eight seconds.
@@ -54,7 +56,7 @@ The controlled test modes use endpoint `/api/test/shipments` and a mode such as 
 - `HubLink-CSV-Sample.csv` contains the two BR-001 InTransit records exported by the application's ViewModel and CSV service after a real request to the supplied API on November 27, 2026. To regenerate a sample containing all branch records while the API is running:
 
 ```powershell
-dotnet run --project .\HubLink.Desktop\HubLink.Desktop.csproj -- --export-sample .\HubLink.Desktop\HubLink-CSV-Sample.csv
+dotnet run --project .\HubLink.Desktop.csproj -- --export-sample .\HubLink-CSV-Sample.csv
 ```
 
 This command defaults to `BR-001` at `http://127.0.0.1:5080`. A different base address and branch can be supplied after the destination path.
